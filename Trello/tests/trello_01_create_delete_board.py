@@ -10,7 +10,7 @@ class CreateBoardDeleteBoard(unittest.TestCase):
         self.create_board_endpoint = Endpoints.CREATE_BOARD
         self.delete_board_endpoint = Endpoints.DELETE_BOARD
         self.params_create_board = Endpoints.params_create_board
-        self.params_delete_board = Endpoints.params_delete_board
+        self.params_delete_board = Endpoints.params_delete
 
     def test_01_create_board(self):
         self.request = requests.post(self.create_board_endpoint, params=self.params_create_board())
