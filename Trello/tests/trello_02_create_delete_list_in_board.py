@@ -2,9 +2,10 @@ import unittest, requests
 from config import Credentials, BoardName, Endpoints
 
 
-class CreateBoardDeleteBoard(unittest.TestCase):
-
+class CreateDeleteListInBoard(unittest.TestCase):
+    
     board_id = None
+    list_id = None
 
     def setUp(self): 
         self.create_board_endpoint = Endpoints.CREATE_BOARD
@@ -12,20 +13,29 @@ class CreateBoardDeleteBoard(unittest.TestCase):
         self.params_create_board = Endpoints.params_create_board
         self.params_delete_board = Endpoints.params_delete_board
 
+        self.create_list_endpoint = Endpoints.CREATE_LIST
+        self.params_create_list = Endpoints.params_create_list
+
+
     def test_01_create_board(self):
         self.request = requests.post(self.create_board_endpoint, params=self.params_create_board())
         self.response = self.request.json()
         self.json = self.response.get("id")
-        CreateBoardDeleteBoard.board_id = self.json
+        CreateDeleteListInBoard.board_id = self.json
 
         self.assertEqual(self.request.status_code, 200)
         self.assertEqual(self.params_create_board().get("name"), self.response.get("name"))
 
-    def test_02_delete_board(self):
-        self.request = requests.delete(self.delete_board_endpoint + CreateBoardDeleteBoard.board_id, params=self.params_delete_board())
+    def test_02_create_lists_within_board(self):
+        parameters = self.params_create_list()
+        parameters["idBoard"] = CreateDeleteListInBoard.board_id
+        self.request = requests.post(self.create_list_endpoint, params=parameters)
+        self.response = self.request.json()
+        self.json = self.response.get("id")
+        CreateDeleteListInBoard.list_id = self.json
 
         self.assertEqual(self.request.status_code, 200)
-        self.assertNotIn(CreateBoardDeleteBoard.board_id, self.request)
+        self.assertEqual(self.params_create_list().get("name"), self.response.get("name"))
 
-    def tearDown(self):
-        self.board_id = None
+    def test_03_create_card_within_list(self):
+        pass
