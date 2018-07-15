@@ -64,7 +64,7 @@ $ pip3 list
 
 ```
 
-Go to __https://github.com/dheerajalim/HTMLTestRunner__, dowload repo, copy HTMLTestRunner.py module and paste it into **/venv/lib/Python/site-packages/**. HTMLTestRunner will generate test report in html format in **test_results** folder.
+Go to __https://github.com/dheerajalim/HTMLTestRunner__, download repo, copy HTMLTestRunner.py module and paste it into **/venv/lib/Python/site-packages/**. HTMLTestRunner will generate test report in html format in **test_results** folder.
 
 
 Go to __Trello__ package and run test by entering the command:
