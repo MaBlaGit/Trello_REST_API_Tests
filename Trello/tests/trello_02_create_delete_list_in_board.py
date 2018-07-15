@@ -16,12 +16,12 @@ class CreateDeleteListInBoard(unittest.TestCase):
         self.params_create_board = Endpoints.params_create_board
         self.params_delete = Endpoints.params_delete
 
-        # list
         self.create_list_endpoint = Endpoints.CREATE_LIST
         self.params_create_list = Endpoints.params_create_list
-        # card
+
         self.create_card_endpoint = Endpoints.CREATE_CARD
         self.comments_endpoint = Endpoints.CREATE_CARD_COMMENT
+        self.delete_card_endpoint = Endpoints.DELETE_CARD
         self.params_create_card = Endpoints.params_create_card
         self.params_create_comment_in_the_card = Endpoints.params_create_comment_in_card
 
@@ -83,4 +83,22 @@ class CreateDeleteListInBoard(unittest.TestCase):
         self.response = self.request.json()
 
         self.assertEqual(self.request.status_code, 200)
-                                
+
+    def test_06_delete_card_from_the_list(self):
+        self.request = requests.delete(self.delete_card_endpoint + 
+                                       CreateDeleteListInBoard.card_id, 
+                                       params=self.params_delete()
+                                    )
+        
+        self.assertEqual(self.request.status_code, 200)
+
+    def test_07_delete_board(self):
+        self.request = requests.delete(self.delete_board_endpoint + 
+                                       CreateDeleteListInBoard.board_id, 
+                                       params=self.params_delete()
+                                    )
+        self.assertEqual(self.request.status_code, 200)
+        self.assertNotIn(CreateDeleteListInBoard.board_id, self.request)
+
+
+                             

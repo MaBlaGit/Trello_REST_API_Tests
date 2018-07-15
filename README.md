@@ -1,7 +1,7 @@
 # Trello project management - API testing with Python Requests library.
 
 
-This project contains couple of tests written agains Trello REST API. 
+This project contains couple of tests written against Trello REST API. 
 In order to run this tests you have to have your own Trello account which you can create here: __https://trello.com/__
 
 
@@ -33,7 +33,7 @@ After downloading the repo, go to __Trello_REST_API_Tests__ folder and create __
 
 
 ```
-$python3.6 -m venv ./venv
+$ python3.6 -m venv ./venv
 
 ```
 
@@ -63,6 +63,8 @@ Check if requests library was sucessfully installed in your environment:
 $ pip3 list
 
 ```
+
+Go to __https://github.com/dheerajalim/HTMLTestRunner__, dowload repo, copy HTMLTestRunner.py module and paste it into **/venv/lib/Python/site-packages/**. HTMLTestRunner will generate test report in html format in **test_results** folder.
 
 
 Go to __Trello__ package and run test by entering the command:

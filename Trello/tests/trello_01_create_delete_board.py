@@ -26,6 +26,3 @@ class CreateBoardDeleteBoard(unittest.TestCase):
 
         self.assertEqual(self.request.status_code, 200)
         self.assertNotIn(CreateBoardDeleteBoard.board_id, self.request)
-
-    def tearDown(self):
-        self.board_id = None

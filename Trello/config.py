@@ -24,8 +24,7 @@ class Endpoints:
 
     CREATE_CARD = "https://api.trello.com/1/cards/"
     CREATE_CARD_COMMENT = "/actions/comments"
-
-    DELETE_CARD = ""
+    DELETE_CARD = "https://api.trello.com/1/cards/"
 
     @staticmethod
     def params_create_board():
